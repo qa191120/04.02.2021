@@ -1,0 +1,43 @@
+- what is encapsulation?
+- what is access modifiers?
+- why do we need the separation between public, private etc. ?
+- how does package name relate to the folders?
+
+create a new project, name the BASE package com.app.painter (with Main)
+create a new package, name it com.app.shapes
+
+in com.shapes:
+  create public class circle 
+  create public class Background
+  create public class ShapesEnlarger
+  
+  inside Background class:
+    final String color
+    final float depth
+    @AllArgsConstructor
+    @ToString
+  inside class Circle:
+      Background background; // default
+      private double radius; // private
+      public Circle(double _radius)  // I wrote it for you...
+      {
+        radius = _radius;
+        background = new Background("Green", 0.87f); // change this to a color, depth of your choice
+      }      
+      public double getRadius() // this function should return the radius
+      public String getColor() // this function should return the background color
+      void enlarge(double scale) // [default] this function should multiply the radius in this value => and set the new value into the radius
+      public void draw() // I wrote it for you
+      {
+        System.out.println(String.format("Drawing the circle with %f radius in colors: %s", radius, background));
+      }
+  inside class ShapesEnlarger:
+     public static void enlargeCircle(Circle c) // this should call the enlarge method for circle c
+        
+in com.painter (with Main):
+    public static void main(String[] args) {
+        // create a circle with radius of 4.5
+        // call circle draw
+        // call ShapesEnlarger.enlargeCircle for the circle
+        // call circle draw again
+    }
